@@ -34,6 +34,11 @@
         // resultado = num1 / num2;
         // return resultado;
        }
+       public void Limpiar(){
+        dato = 0;
+
+         
+       }
 
 
 
