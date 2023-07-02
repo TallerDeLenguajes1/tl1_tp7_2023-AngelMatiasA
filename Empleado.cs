@@ -44,7 +44,7 @@ public int antiguedad( DateTime fechaIngreso){
     if( anios != 0){
         if (fechaIngreso.Month >= hoy.Month && fechaIngreso.Day >= hoy.Day  )
         {
-               
+
             return anios;
             
         }else
@@ -71,5 +71,28 @@ public int aniosParaJub( int edad, char genero){
 
     return aniosJub;
 }
+ public double calcularSalario( int antiguedad, Cargo cargo, char estadoCivil, double sueldoBasico){
+    
+
+    if (antiguedad >0)
+    {
+          sueldoBasico *= (antiguedad/100 +1);
+        
+    }
+    if (cargo == Cargo.Ingeniero || cargo == Cargo.Especialista )
+    {
+        sueldoBasico *=1.50;
+        
+    }
+    if (estadoCivil == 'c')
+    {
+        sueldoBasico+=15000;
+        
+    }
+
+    return sueldoBasico; 
+
+
+ }
 
 }
