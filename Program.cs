@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using EspacioCalculadora;
 using System;
+using EspacioEmpresa;
 
 namespace MyApp // Note: actual namespace depends on the project name.
 {
@@ -13,6 +14,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
 
         }
+        /*
         static void Main(string[] args)
         {
             Console.WriteLine("Hello, World!");
@@ -111,6 +113,63 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
           
         }
+*/
+
+        
+     static void Main(string[] args)
+        {
+
+                   Empleado []empleados = new Empleado[3];
+
+
+
+        empleados[0] = new Empleado();
+        empleados[0].Apellido = "Jonas";
+        empleados[0].Nombre1 = "pedro";
+        empleados[0].FechaNac = new DateTime(1987, 6, 8);
+        empleados[0].EstadoCivil = 'c';
+        empleados[0].Genero = 'm';
+        empleados[0].FechaIngreso = new DateTime(2010, 9, 4);
+        empleados[0].SueldoBasico = 91000;
+        empleados[0].Cargo = Cargo.Ingeniero;
+
+        empleados[1] = new Empleado();
+        empleados[1].Apellido = "Perez";
+        empleados[1].Nombre1 = "Andrea";
+        empleados[1].FechaNac = new DateTime(1994, 7, 2);
+        empleados[1].EstadoCivil = 'c';
+        empleados[1].Genero = 'f';
+        empleados[1].FechaIngreso = new DateTime(2016, 9, 4);
+        empleados[1].SueldoBasico = 81000;
+        empleados[1].Cargo = Cargo.Especialista;
+    
+        empleados[2] = new Empleado();
+        empleados[2].Apellido = "Lucero";
+        empleados[2].Nombre1 = "Sofia Gerundia";
+        empleados[2].FechaNac = new DateTime(1982, 5, 10);
+        empleados[2].EstadoCivil = 's';
+        empleados[2].Genero = 'f';
+        empleados[2].FechaIngreso = new DateTime(2002,7 , 3);
+        empleados[2].SueldoBasico = 91000;
+        empleados[2].Cargo = Cargo.Ingeniero;
+
+        double montoTotal = 0; 
+        Empleado empleadoJub = new Empleado();
+        
+
+        foreach (var empleado in empleados)
+        {
+            int edad = empleado.antiguedad(empleado.FechaNac);
+            int antiguedad = empleado.aniosParaJub(edad, empleado.Genero);
+           montoTotal +=  empleado.calcularSalario(antiguedad, empleado.Cargo, empleado.EstadoCivil, empleado.SueldoBasico);
+   
+        }
+        Console.WriteLine($"el monto total es { montoTotal}");
+
+        }
+
 
     }
+
+
 }
