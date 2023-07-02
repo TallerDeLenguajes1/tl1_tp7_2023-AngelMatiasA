@@ -40,9 +40,9 @@ public class Empleado
 public int antiguedad( DateTime fechaIngreso){
     DateTime hoy = DateTime.Now;
     int anios = 0; 
-    anios = fechaIngreso.Year - hoy.Year; 
+    anios =  hoy.Year - fechaIngreso.Year ; 
     if( anios != 0){
-        if (fechaIngreso.Month >= hoy.Month && fechaIngreso.Day >= hoy.Day  )
+        if (fechaIngreso.Month <= hoy.Month && fechaIngreso.Day <= hoy.Day  )
         {
 
             return anios;
@@ -76,7 +76,16 @@ public int aniosParaJub( int edad, char genero){
 
     if (antiguedad >0)
     {
-          sueldoBasico *= (antiguedad/100 +1);
+        if (antiguedad >20)
+        {
+            sueldoBasico *= (25/100 +1);
+            
+        }else
+        {
+         sueldoBasico *= (antiguedad/100 +1);
+
+            
+        }
         
     }
     if (cargo == Cargo.Ingeniero || cargo == Cargo.Especialista )
@@ -94,6 +103,18 @@ public int aniosParaJub( int edad, char genero){
 
 
  } 
+
+  public void MostrarDatos(Empleado empleadoJub)
+        {
+            Console.WriteLine("Nombre: " + empleadoJub.Nombre);
+            Console.WriteLine("Apellido: " + empleadoJub.apellido);
+            Console.WriteLine("Fecha de nacimiento: " + empleadoJub.fechaNac.ToShortDateString());
+            Console.WriteLine("Estado civil: " + empleadoJub.estadoCivil);
+            Console.WriteLine("Género: " + empleadoJub.genero);
+            Console.WriteLine("Fecha de ingreso: " + empleadoJub.fechaIngreso.ToShortDateString());
+            Console.WriteLine("Sueldo básico: " + empleadoJub.sueldoBasico);
+            Console.WriteLine("Cargo: " + empleadoJub.cargo);
+        }
 
 
 }

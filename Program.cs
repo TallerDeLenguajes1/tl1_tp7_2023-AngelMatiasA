@@ -146,7 +146,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
         empleados[2] = new Empleado();
         empleados[2].Apellido = "Lucero";
         empleados[2].Nombre1 = "Sofia Gerundia";
-        empleados[2].FechaNac = new DateTime(1982, 5, 10);
+        empleados[2].FechaNac = new DateTime(1983, 7, 1);
         empleados[2].EstadoCivil = 's';
         empleados[2].Genero = 'f';
         empleados[2].FechaIngreso = new DateTime(2002,7 , 3);
@@ -154,7 +154,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
         empleados[2].Cargo = Cargo.Ingeniero;
 
         double montoTotal = 0; 
-        Empleado empleadoJub = new Empleado();
+       
         
 
         foreach (var empleado in empleados)
@@ -165,6 +165,37 @@ namespace MyApp // Note: actual namespace depends on the project name.
    
         }
         Console.WriteLine($"el monto total es { montoTotal}");
+
+        int edadJub =0;
+        int antigueJub = 0;
+         Empleado empleadoJub = new Empleado();
+    int jub = 80;
+            for (int i = 0; i < empleados.Length; i++)
+            {
+                int edad = empleados[i].antiguedad(empleados[i].FechaNac);
+                
+                
+                if (empleados[i].aniosParaJub(edad, empleados[i].Genero) <=jub)
+                {   edadJub = edad;
+                    jub = empleados[i].aniosParaJub(edad, empleados[i].Genero);
+                    antigueJub = empleados[i].antiguedad(empleados[i].FechaIngreso);
+                    empleadoJub = empleados[i];
+                    
+                }
+
+                
+            }
+
+            Console.WriteLine($"la edad del empleado mas proximo  a jubilarse es {edadJub}");
+            Console.WriteLine($"la antiguedad del empleado mas proximo  a jubilarse es {antigueJub}");
+            Console.WriteLine($"los años que le faltan para jubilarse son {jub} anios");
+
+            montoTotal +=  empleadoJub.calcularSalario(antigueJub, empleadoJub.Cargo, empleadoJub.EstadoCivil, empleadoJub.SueldoBasico);
+                        Console.WriteLine($" el sueldo neto del empleado cerca de jubliarse es de {montoTotal} anios"); 
+            empleadoJub.MostrarDatos(empleadoJub);
+
+
+
 
         }
 
